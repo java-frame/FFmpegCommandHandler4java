@@ -97,7 +97,18 @@ public class Test {
 		// 停止全部任务
 		manager.stopAll();
 	}
+
+    public static void test5() throws InterruptedException{
+        FFmpegManager manager = new FFmpegManagerImpl();
+        // -rtsp_transport tcp
+        //测试多个任何同时执行和停止情况
+        //false表示使用配置文件中的ffmpeg路径，true表示本条命令已经包含ffmpeg所在的完整路径
+        String path="D:\\gitrepository\\FFmpegCommandHandler4java\\src\\cc\\eguid\\FFmpegCommandManager\\test\\";
+        manager.start("tomcat", "E:\\ffmpeg-3.4.1-win64-static\\bin\\ffmpeg -y -v error -i "+path+"1.mp3 -filter:a \"atempo=0.5\" -vn  "+path+"output.mp3",true);
+
+    }
 	public static void main(String[] args) throws InterruptedException {
+      test5();
 //		test1();
 //		test2();
 		//test3();
